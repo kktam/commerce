@@ -2,9 +2,9 @@
 
 | Property | Value |
 |----------|-------|
-| **Generated** | 2026-04-13T00:23:05.394Z |
+| **Generated** | 2026-04-13T00:50:57.885Z |
 | **Project** | C:\\Users\\kktam\\Documents\\code\\next\\commerce |
-| **Duration** | 507ms |
+| **Duration** | 423ms |
 | **Tools Used** | architecture, api, metrics, dependencies |
 
 ---
@@ -32,19 +32,19 @@ Analysis complete: 4 tools ran successfully, 0 failed.
 
     - **outputs** (1 files)
       - **output** (4 files)
+    - **output** (5 files)
     - **lib** (3 files)
       - **shopify** (2 files)
-    - **output** (5 files)
     - **fonts** (1 files)
     - **components** (8 files)
-      - **icons** (1 files)
-      - **grid** (3 files)
       - **product** (3 files)
       - **layout** (3 files)
+      - **grid** (3 files)
+      - **icons** (1 files)
       - **cart** (7 files)
     - **app** (8 files)
-      - **[page]** (3 files)
       - **search** (4 files)
+      - **[page]** (3 files)
       - **product** (0 files)
       - **api** (0 files)
 
@@ -104,6 +104,63 @@ Analysis complete: 4 tools ran successfully, 0 failed.
 - Load balancing or CDN configuration detected
 - Caching infrastructure detected for horizontal scaling
 
+### Sequence Diagrams
+
+#### Cart-context Context Flow
+
+```mermaid
+sequenceDiagram
+    autonumber
+
+    Component ->> Context_cart_context_: useCart-context()
+    Context_cart_context_ ->> Context_cart_context_: updateCartItem(
+    Context_cart_context_ ->> Context_cart_context_: updateCartTotals(
+    Context_cart_context_ ->> Context_cart_context_: updateCartItem(
+    Context_cart_context_ ->> Context_cart_context_: updateCartTotals(
+
+```
+
+#### open-cart Call Flow
+
+```mermaid
+sequenceDiagram
+    autonumber
+
+    open_cart ->> open_cart: OpenCart
+    open_cart ->> open_cart: clsx
+
+```
+
+#### modal Call Flow
+
+```mermaid
+sequenceDiagram
+    autonumber
+
+    modal ->> modal: CartModal
+    modal ->> modal: useCart
+    modal ->> modal: useState
+    modal ->> modal: useRef
+    modal ->> modal: setIsOpen
+    modal ->> modal: setIsOpen
+
+```
+
+#### edit-item-quantity-button Call Flow
+
+```mermaid
+sequenceDiagram
+    autonumber
+
+    edit_item_quantity_button ->> edit_item_quantity_button: SubmitButton
+    edit_item_quantity_button ->> edit_item_quantity_button: clsx
+    edit_item_quantity_button ->> edit_item_quantity_button: EditItemQuantityButton
+    edit_item_quantity_button ->> edit_item_quantity_button: useActionState
+    edit_item_quantity_button ->> formAction: bind
+    edit_item_quantity_button ->> edit_item_quantity_button: async
+
+```
+
 
 
 ## Project Structure
@@ -133,6 +190,21 @@ graph TD
     end
 
     Root --> Nsub_outputs
+    subgraph Nsub_output["📁 output"]
+        style Nsub_output fill:#78909C22,stroke:#78909C,stroke-width:2px
+        Noutput_analysis_report_md["📝 analysis-report.md"]:::fileNode
+        style Noutput_analysis_report_md stroke:#555555
+        Noutput_analysis_report_project_structure_mmd["📄 analysis-report-project-structure.mmd"]:::fileNode
+        style Noutput_analysis_report_project_structure_mmd stroke:#78909C
+        Noutput_analysis_report_project_structure_html["🌐 analysis-report-project-structure.html"]:::fileNode
+        style Noutput_analysis_report_project_structure_html stroke:#E34F26
+        Noutput_analysis_report_api_flow_mmd["📄 analysis-report-api-flow.mmd"]:::fileNode
+        style Noutput_analysis_report_api_flow_mmd stroke:#78909C
+        Noutput_analysis_report_api_flow_html["🌐 analysis-report-api-flow.html"]:::fileNode
+        style Noutput_analysis_report_api_flow_html stroke:#E34F26
+    end
+
+    Root --> Nsub_output
     subgraph Nsub_lib["📁 lib"]
         style Nsub_lib fill:#9C27B022,stroke:#9C27B0,stroke-width:2px
         Nlib_utils_ts["📘 utils.ts"]:::fileNode
@@ -151,21 +223,6 @@ graph TD
     end
 
     Root --> Nsub_lib
-    subgraph Nsub_output["📁 output"]
-        style Nsub_output fill:#78909C22,stroke:#78909C,stroke-width:2px
-        Noutput_analysis_report_md["📝 analysis-report.md"]:::fileNode
-        style Noutput_analysis_report_md stroke:#555555
-        Noutput_analysis_report_project_structure_mmd["📄 analysis-report-project-structure.mmd"]:::fileNode
-        style Noutput_analysis_report_project_structure_mmd stroke:#78909C
-        Noutput_analysis_report_project_structure_html["🌐 analysis-report-project-structure.html"]:::fileNode
-        style Noutput_analysis_report_project_structure_html stroke:#E34F26
-        Noutput_analysis_report_api_flow_mmd["📄 analysis-report-api-flow.mmd"]:::fileNode
-        style Noutput_analysis_report_api_flow_mmd stroke:#78909C
-        Noutput_analysis_report_api_flow_html["🌐 analysis-report-api-flow.html"]:::fileNode
-        style Noutput_analysis_report_api_flow_html stroke:#E34F26
-    end
-
-    Root --> Nsub_output
     subgraph Nsub_fonts["📁 fonts"]
         style Nsub_fonts fill:#B0BEC522,stroke:#B0BEC5,stroke-width:2px
         Nfonts_Inter_Bold_ttf["📄 Inter-Bold.ttf"]:::fileNode
@@ -191,20 +248,6 @@ graph TD
         style Ncomponents_label_tsx stroke:#61DAFB
         Ncomponents_carousel_tsx["⚛️ carousel.tsx"]:::fileNode
         style Ncomponents_carousel_tsx stroke:#61DAFB
-        subgraph Ncomponents_icons["📁 icons"]
-            style Ncomponents_icons fill:#B0BEC522,stroke:#B0BEC5,stroke-width:1.5px
-            Ncomponents_icons_logo_tsx["⚛️ logo.tsx"]:::fileNode
-            style Ncomponents_icons_logo_tsx stroke:#61DAFB
-        end
-        subgraph Ncomponents_grid["📁 grid"]
-            style Ncomponents_grid fill:#B0BEC522,stroke:#B0BEC5,stroke-width:1.5px
-            Ncomponents_grid_tile_tsx["⚛️ tile.tsx"]:::fileNode
-            style Ncomponents_grid_tile_tsx stroke:#61DAFB
-            Ncomponents_grid_three_items_tsx["⚛️ three-items.tsx"]:::fileNode
-            style Ncomponents_grid_three_items_tsx stroke:#61DAFB
-            Ncomponents_grid_index_tsx["⚛️ index.tsx"]:::fileNode
-            style Ncomponents_grid_index_tsx stroke:#61DAFB
-        end
         subgraph Ncomponents_product["📁 product"]
             style Ncomponents_product fill:#B0BEC522,stroke:#B0BEC5,stroke-width:1.5px
             Ncomponents_product_variant_selector_tsx["⚛️ variant-selector.tsx"]:::fileNode
@@ -222,6 +265,20 @@ graph TD
             style Ncomponents_layout_footer_tsx stroke:#61DAFB
             Ncomponents_layout_footer_menu_tsx["⚛️ footer-menu.tsx"]:::fileNode
             style Ncomponents_layout_footer_menu_tsx stroke:#61DAFB
+        end
+        subgraph Ncomponents_grid["📁 grid"]
+            style Ncomponents_grid fill:#B0BEC522,stroke:#B0BEC5,stroke-width:1.5px
+            Ncomponents_grid_tile_tsx["⚛️ tile.tsx"]:::fileNode
+            style Ncomponents_grid_tile_tsx stroke:#61DAFB
+            Ncomponents_grid_three_items_tsx["⚛️ three-items.tsx"]:::fileNode
+            style Ncomponents_grid_three_items_tsx stroke:#61DAFB
+            Ncomponents_grid_index_tsx["⚛️ index.tsx"]:::fileNode
+            style Ncomponents_grid_index_tsx stroke:#61DAFB
+        end
+        subgraph Ncomponents_icons["📁 icons"]
+            style Ncomponents_icons fill:#B0BEC522,stroke:#B0BEC5,stroke-width:1.5px
+            Ncomponents_icons_logo_tsx["⚛️ logo.tsx"]:::fileNode
+            style Ncomponents_icons_logo_tsx stroke:#61DAFB
         end
         subgraph Ncomponents_cart["📁 cart"]
             style Ncomponents_cart fill:#B0BEC522,stroke:#B0BEC5,stroke-width:1.5px
@@ -261,15 +318,6 @@ graph TD
         style Napp_favicon_ico stroke:#78909C
         Napp_error_tsx["⚛️ error.tsx"]:::fileNode
         style Napp_error_tsx stroke:#61DAFB
-        subgraph Napp__page_["📁 [page]"]
-            style Napp__page_ fill:#B0BEC522,stroke:#B0BEC5,stroke-width:1.5px
-            Napp__page__page_tsx["⚛️ page.tsx"]:::fileNode
-            style Napp__page__page_tsx stroke:#61DAFB
-            Napp__page__opengraph_image_tsx["⚛️ opengraph-image.tsx"]:::fileNode
-            style Napp__page__opengraph_image_tsx stroke:#61DAFB
-            Napp__page__layout_tsx["⚛️ layout.tsx"]:::fileNode
-            style Napp__page__layout_tsx stroke:#61DAFB
-        end
         subgraph Napp_search["📁 search"]
             style Napp_search fill:#B0BEC522,stroke:#B0BEC5,stroke-width:1.5px
             Napp_search_page_tsx["⚛️ page.tsx"]:::fileNode
@@ -280,6 +328,15 @@ graph TD
             style Napp_search_layout_tsx stroke:#61DAFB
             Napp_search_children_wrapper_tsx["⚛️ children-wrapper.tsx"]:::fileNode
             style Napp_search_children_wrapper_tsx stroke:#61DAFB
+        end
+        subgraph Napp__page_["📁 [page]"]
+            style Napp__page_ fill:#B0BEC522,stroke:#B0BEC5,stroke-width:1.5px
+            Napp__page__page_tsx["⚛️ page.tsx"]:::fileNode
+            style Napp__page__page_tsx stroke:#61DAFB
+            Napp__page__opengraph_image_tsx["⚛️ opengraph-image.tsx"]:::fileNode
+            style Napp__page__opengraph_image_tsx stroke:#61DAFB
+            Napp__page__layout_tsx["⚛️ layout.tsx"]:::fileNode
+            style Napp__page__layout_tsx stroke:#61DAFB
         end
         subgraph Napp_product["📁 product"]
             style Napp_product fill:#B0BEC522,stroke:#B0BEC5,stroke-width:1.5px
@@ -427,7 +484,7 @@ graph LR
 | Metric | Value |
 |--------|-------|
 | Total Files | 84 |
-| Total Lines | 15,826 |
+| Total Lines | 16,193 |
 | Source Files | 65 |
 | Source Lines | 3,961 |
 | Blank Lines | 440 |
