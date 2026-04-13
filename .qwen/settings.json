@@ -1,0 +1,19 @@
+{
+  "techStack": [
+    "typescript",
+    "javascript"
+  ],
+  "analysis": {
+    "depth": 3,
+    "excludedPaths": [
+      "node_modules",
+      "dist",
+      ".git"
+    ],
+    "maxFileSize": 1048576
+  },
+  "output": {
+    "format": "markdown",
+    "outputPath": "./analysis-output"
+  }
+}

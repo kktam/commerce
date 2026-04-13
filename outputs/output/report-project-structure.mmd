@@ -1,0 +1,183 @@
+graph TD
+    classDef frameworkNode fill:#E8F5E9,stroke:#4CAF50,stroke-width:3px,color:#1B5E20
+    classDef dirNode fill:#E3F2FD,stroke:#2196F3,stroke-width:2px,color:#0D47A1
+    classDef fileNode fill:#FFFFFF,stroke-width:1.5px
+    Root["📦 Next.js App Router + Tailwind + Headless UI"]:::frameworkNode
+
+    subgraph Nsub_outputs["📁 outputs"]
+        style Nsub_outputs fill:#78909C22,stroke:#78909C,stroke-width:2px
+        Noutputs_report_md["📝 report.md"]:::fileNode
+        style Noutputs_report_md stroke:#555555
+        subgraph Noutputs_output["📁 output"]
+            style Noutputs_output fill:#78909C22,stroke:#78909C,stroke-width:1.5px
+            Noutputs_output_report_project_structure_mmd["📄 report-project-structure.mmd"]:::fileNode
+            style Noutputs_output_report_project_structure_mmd stroke:#78909C
+            Noutputs_output_report_project_structure_html["🌐 report-project-structure.html"]:::fileNode
+            style Noutputs_output_report_project_structure_html stroke:#E34F26
+            Noutputs_output_report_api_flow_mmd["📄 report-api-flow.mmd"]:::fileNode
+            style Noutputs_output_report_api_flow_mmd stroke:#78909C
+            Noutputs_output_report_api_flow_html["🌐 report-api-flow.html"]:::fileNode
+            style Noutputs_output_report_api_flow_html stroke:#E34F26
+        end
+    end
+
+    Root --> Nsub_outputs
+    subgraph Nsub_lib["📁 lib"]
+        style Nsub_lib fill:#9C27B022,stroke:#9C27B0,stroke-width:2px
+        Nlib_utils_ts["📘 utils.ts"]:::fileNode
+        style Nlib_utils_ts stroke:#3178C6
+        Nlib_type_guards_ts["📘 type-guards.ts"]:::fileNode
+        style Nlib_type_guards_ts stroke:#3178C6
+        Nlib_constants_ts["📘 constants.ts"]:::fileNode
+        style Nlib_constants_ts stroke:#3178C6
+        subgraph Nlib_shopify["📁 shopify"]
+            style Nlib_shopify fill:#B0BEC522,stroke:#B0BEC5,stroke-width:1.5px
+            Nlib_shopify_types_ts["📘 types.ts"]:::fileNode
+            style Nlib_shopify_types_ts stroke:#3178C6
+            Nlib_shopify_index_ts["📘 index.ts"]:::fileNode
+            style Nlib_shopify_index_ts stroke:#3178C6
+        end
+    end
+
+    Root --> Nsub_lib
+    subgraph Nsub_output["📁 output"]
+        style Nsub_output fill:#78909C22,stroke:#78909C,stroke-width:2px
+        Noutput_analysis_report_md["📝 analysis-report.md"]:::fileNode
+        style Noutput_analysis_report_md stroke:#555555
+        Noutput_analysis_report_project_structure_mmd["📄 analysis-report-project-structure.mmd"]:::fileNode
+        style Noutput_analysis_report_project_structure_mmd stroke:#78909C
+        Noutput_analysis_report_project_structure_html["🌐 analysis-report-project-structure.html"]:::fileNode
+        style Noutput_analysis_report_project_structure_html stroke:#E34F26
+        Noutput_analysis_report_api_flow_mmd["📄 analysis-report-api-flow.mmd"]:::fileNode
+        style Noutput_analysis_report_api_flow_mmd stroke:#78909C
+        Noutput_analysis_report_api_flow_html["🌐 analysis-report-api-flow.html"]:::fileNode
+        style Noutput_analysis_report_api_flow_html stroke:#E34F26
+    end
+
+    Root --> Nsub_output
+    subgraph Nsub_fonts["📁 fonts"]
+        style Nsub_fonts fill:#B0BEC522,stroke:#B0BEC5,stroke-width:2px
+        Nfonts_Inter_Bold_ttf["📄 Inter-Bold.ttf"]:::fileNode
+        style Nfonts_Inter_Bold_ttf stroke:#78909C
+    end
+
+    Root --> Nsub_fonts
+    subgraph Nsub_components["📁 components"]
+        style Nsub_components fill:#E91E6322,stroke:#E91E63,stroke-width:2px
+        Ncomponents_welcome_toast_tsx["⚛️ welcome-toast.tsx"]:::fileNode
+        style Ncomponents_welcome_toast_tsx stroke:#61DAFB
+        Ncomponents_prose_tsx["⚛️ prose.tsx"]:::fileNode
+        style Ncomponents_prose_tsx stroke:#61DAFB
+        Ncomponents_price_tsx["⚛️ price.tsx"]:::fileNode
+        style Ncomponents_price_tsx stroke:#61DAFB
+        Ncomponents_opengraph_image_tsx["⚛️ opengraph-image.tsx"]:::fileNode
+        style Ncomponents_opengraph_image_tsx stroke:#61DAFB
+        Ncomponents_logo_square_tsx["⚛️ logo-square.tsx"]:::fileNode
+        style Ncomponents_logo_square_tsx stroke:#61DAFB
+        Ncomponents_loading_dots_tsx["⚛️ loading-dots.tsx"]:::fileNode
+        style Ncomponents_loading_dots_tsx stroke:#61DAFB
+        Ncomponents_label_tsx["⚛️ label.tsx"]:::fileNode
+        style Ncomponents_label_tsx stroke:#61DAFB
+        Ncomponents_carousel_tsx["⚛️ carousel.tsx"]:::fileNode
+        style Ncomponents_carousel_tsx stroke:#61DAFB
+        subgraph Ncomponents_icons["📁 icons"]
+            style Ncomponents_icons fill:#B0BEC522,stroke:#B0BEC5,stroke-width:1.5px
+            Ncomponents_icons_logo_tsx["⚛️ logo.tsx"]:::fileNode
+            style Ncomponents_icons_logo_tsx stroke:#61DAFB
+        end
+        subgraph Ncomponents_grid["📁 grid"]
+            style Ncomponents_grid fill:#B0BEC522,stroke:#B0BEC5,stroke-width:1.5px
+            Ncomponents_grid_tile_tsx["⚛️ tile.tsx"]:::fileNode
+            style Ncomponents_grid_tile_tsx stroke:#61DAFB
+            Ncomponents_grid_three_items_tsx["⚛️ three-items.tsx"]:::fileNode
+            style Ncomponents_grid_three_items_tsx stroke:#61DAFB
+            Ncomponents_grid_index_tsx["⚛️ index.tsx"]:::fileNode
+            style Ncomponents_grid_index_tsx stroke:#61DAFB
+        end
+        subgraph Ncomponents_product["📁 product"]
+            style Ncomponents_product fill:#B0BEC522,stroke:#B0BEC5,stroke-width:1.5px
+            Ncomponents_product_variant_selector_tsx["⚛️ variant-selector.tsx"]:::fileNode
+            style Ncomponents_product_variant_selector_tsx stroke:#61DAFB
+            Ncomponents_product_product_description_tsx["⚛️ product-description.tsx"]:::fileNode
+            style Ncomponents_product_product_description_tsx stroke:#61DAFB
+            Ncomponents_product_gallery_tsx["⚛️ gallery.tsx"]:::fileNode
+            style Ncomponents_product_gallery_tsx stroke:#61DAFB
+        end
+        subgraph Ncomponents_layout["📁 layout"]
+            style Ncomponents_layout fill:#B0BEC522,stroke:#B0BEC5,stroke-width:1.5px
+            Ncomponents_layout_product_grid_items_tsx["⚛️ product-grid-items.tsx"]:::fileNode
+            style Ncomponents_layout_product_grid_items_tsx stroke:#61DAFB
+            Ncomponents_layout_footer_tsx["⚛️ footer.tsx"]:::fileNode
+            style Ncomponents_layout_footer_tsx stroke:#61DAFB
+            Ncomponents_layout_footer_menu_tsx["⚛️ footer-menu.tsx"]:::fileNode
+            style Ncomponents_layout_footer_menu_tsx stroke:#61DAFB
+        end
+        subgraph Ncomponents_cart["📁 cart"]
+            style Ncomponents_cart fill:#B0BEC522,stroke:#B0BEC5,stroke-width:1.5px
+            Ncomponents_cart_open_cart_tsx["⚛️ open-cart.tsx"]:::fileNode
+            style Ncomponents_cart_open_cart_tsx stroke:#61DAFB
+            Ncomponents_cart_modal_tsx["⚛️ modal.tsx"]:::fileNode
+            style Ncomponents_cart_modal_tsx stroke:#61DAFB
+            Ncomponents_cart_edit_item_quantity_button_tsx["⚛️ edit-item-quantity-button.tsx"]:::fileNode
+            style Ncomponents_cart_edit_item_quantity_button_tsx stroke:#61DAFB
+            Ncomponents_cart_delete_item_button_tsx["⚛️ delete-item-button.tsx"]:::fileNode
+            style Ncomponents_cart_delete_item_button_tsx stroke:#61DAFB
+            Ncomponents_cart_cart_context_tsx["⚛️ cart-context.tsx"]:::fileNode
+            style Ncomponents_cart_cart_context_tsx stroke:#61DAFB
+            Ncomponents_cart_add_to_cart_tsx["⚛️ add-to-cart.tsx"]:::fileNode
+            style Ncomponents_cart_add_to_cart_tsx stroke:#61DAFB
+            Ncomponents_cart_actions_ts["📘 actions.ts"]:::fileNode
+            style Ncomponents_cart_actions_ts stroke:#3178C6
+        end
+    end
+
+    Root --> Nsub_components
+    subgraph Nsub_app["📁 app"]
+        style Nsub_app fill:#B0BEC522,stroke:#B0BEC5,stroke-width:2px
+        Napp_sitemap_ts["📘 sitemap.ts"]:::fileNode
+        style Napp_sitemap_ts stroke:#3178C6
+        Napp_robots_ts["📘 robots.ts"]:::fileNode
+        style Napp_robots_ts stroke:#3178C6
+        Napp_page_tsx["⚛️ page.tsx"]:::fileNode
+        style Napp_page_tsx stroke:#61DAFB
+        Napp_opengraph_image_tsx["⚛️ opengraph-image.tsx"]:::fileNode
+        style Napp_opengraph_image_tsx stroke:#61DAFB
+        Napp_layout_tsx["⚛️ layout.tsx"]:::fileNode
+        style Napp_layout_tsx stroke:#61DAFB
+        Napp_globals_css["🎨 globals.css"]:::fileNode
+        style Napp_globals_css stroke:#1572B6
+        Napp_favicon_ico["📄 favicon.ico"]:::fileNode
+        style Napp_favicon_ico stroke:#78909C
+        Napp_error_tsx["⚛️ error.tsx"]:::fileNode
+        style Napp_error_tsx stroke:#61DAFB
+        subgraph Napp__page_["📁 [page]"]
+            style Napp__page_ fill:#B0BEC522,stroke:#B0BEC5,stroke-width:1.5px
+            Napp__page__page_tsx["⚛️ page.tsx"]:::fileNode
+            style Napp__page__page_tsx stroke:#61DAFB
+            Napp__page__opengraph_image_tsx["⚛️ opengraph-image.tsx"]:::fileNode
+            style Napp__page__opengraph_image_tsx stroke:#61DAFB
+            Napp__page__layout_tsx["⚛️ layout.tsx"]:::fileNode
+            style Napp__page__layout_tsx stroke:#61DAFB
+        end
+        subgraph Napp_search["📁 search"]
+            style Napp_search fill:#B0BEC522,stroke:#B0BEC5,stroke-width:1.5px
+            Napp_search_page_tsx["⚛️ page.tsx"]:::fileNode
+            style Napp_search_page_tsx stroke:#61DAFB
+            Napp_search_loading_tsx["⚛️ loading.tsx"]:::fileNode
+            style Napp_search_loading_tsx stroke:#61DAFB
+            Napp_search_layout_tsx["⚛️ layout.tsx"]:::fileNode
+            style Napp_search_layout_tsx stroke:#61DAFB
+            Napp_search_children_wrapper_tsx["⚛️ children-wrapper.tsx"]:::fileNode
+            style Napp_search_children_wrapper_tsx stroke:#61DAFB
+        end
+        subgraph Napp_product["📁 product"]
+            style Napp_product fill:#B0BEC522,stroke:#B0BEC5,stroke-width:1.5px
+        end
+        subgraph Napp_api["📁 api"]
+            style Napp_api fill:#03A9F422,stroke:#03A9F4,stroke-width:1.5px
+        end
+    end
+
+    Root --> Nsub_app
+
+    %% Import connections

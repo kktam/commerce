@@ -1,0 +1,96 @@
+graph LR
+    classDef clientNode fill:#E3F2FD,stroke:#2196F3,stroke-width:2px
+    classDef apiNode fill:#E8F5E9,stroke:#4CAF50,stroke-width:2px
+    classDef externalNode fill:#FFF3E0,stroke:#FF9800,stroke-width:2px
+    classDef appNode fill:#F3E5F5,stroke:#9C27B0,stroke-width:2px
+    Client["🌐 Browser"]:::clientNode
+    NextJS["⚡ Next.js App"]:::appNode
+    Shopify["🛒 Shopify Storefront API"]:::externalNode
+
+    Client -->|Navigation/Actions| NextJS
+    NextJS -->|GraphQL Queries/Mutations| Shopify
+
+    subgraph domain_Cart["📦 Cart"]
+        style domain_Cart fill:#F5F5F5,stroke:#BDBDBD,stroke-width:1px
+        op_POST__cart["📝 POST /cart"]
+        style op_POST__cart fill:#FFFFFF,stroke:#FF5722,stroke-width:1.5px
+        NextJS --> op_POST__cart
+        op_POST__cart -.-> Shopify
+        op_POST__cart_items["📝 POST /cart/items"]
+        style op_POST__cart_items fill:#FFFFFF,stroke:#FF5722,stroke-width:1.5px
+        NextJS --> op_POST__cart_items
+        op_POST__cart_items -.-> Shopify
+        op_DELETE__cart_items["🗑️ DELETE /cart/items"]
+        style op_DELETE__cart_items fill:#FFFFFF,stroke:#F44336,stroke-width:1.5px
+        NextJS --> op_DELETE__cart_items
+        op_DELETE__cart_items -.-> Shopify
+        op_PUT__cart_items["✏️ PUT /cart/items"]
+        style op_PUT__cart_items fill:#FFFFFF,stroke:#FF9800,stroke-width:1.5px
+        NextJS --> op_PUT__cart_items
+        op_PUT__cart_items -.-> Shopify
+        op_GET__cart["📖 GET /cart"]
+        style op_GET__cart fill:#FFFFFF,stroke:#4CAF50,stroke-width:1.5px
+        NextJS --> op_GET__cart
+        op_GET__cart -.-> Shopify
+    end
+
+    subgraph domain_Collections["📦 Collections"]
+        style domain_Collections fill:#F5F5F5,stroke:#BDBDBD,stroke-width:1px
+        op_GET__collections__handle["📖 GET /collections/:handle"]
+        style op_GET__collections__handle fill:#FFFFFF,stroke:#4CAF50,stroke-width:1.5px
+        NextJS --> op_GET__collections__handle
+        op_GET__collections__handle -.-> Shopify
+        op_GET__collections__handle["📖 GET /collections/:handle"]
+        style op_GET__collections__handle fill:#FFFFFF,stroke:#4CAF50,stroke-width:1.5px
+        NextJS --> op_GET__collections__handle
+        op_GET__collections__handle -.-> Shopify
+    end
+
+    subgraph domain_Products["📦 Products"]
+        style domain_Products fill:#F5F5F5,stroke:#BDBDBD,stroke-width:1px
+        op_GET__products["📖 GET /products"]
+        style op_GET__products fill:#FFFFFF,stroke:#4CAF50,stroke-width:1.5px
+        NextJS --> op_GET__products
+        op_GET__products -.-> Shopify
+        op_GET__products__handle["📖 GET /products/:handle"]
+        style op_GET__products__handle fill:#FFFFFF,stroke:#4CAF50,stroke-width:1.5px
+        NextJS --> op_GET__products__handle
+        op_GET__products__handle -.-> Shopify
+        op_GET__products__handle_rec["📖 GET /products/:handle/recommendations"]
+        style op_GET__products__handle_rec fill:#FFFFFF,stroke:#4CAF50,stroke-width:1.5px
+        NextJS --> op_GET__products__handle_rec
+        op_GET__products__handle_rec -.-> Shopify
+        op_GET__products["📖 GET /products"]
+        style op_GET__products fill:#FFFFFF,stroke:#4CAF50,stroke-width:1.5px
+        NextJS --> op_GET__products
+        op_GET__products -.-> Shopify
+    end
+
+    subgraph domain_Navigation["📦 Navigation"]
+        style domain_Navigation fill:#F5F5F5,stroke:#BDBDBD,stroke-width:1px
+        op_GET__menu["📖 GET /menu"]
+        style op_GET__menu fill:#FFFFFF,stroke:#4CAF50,stroke-width:1.5px
+        NextJS --> op_GET__menu
+        op_GET__menu -.-> Shopify
+    end
+
+    subgraph domain_Pages["📦 Pages"]
+        style domain_Pages fill:#F5F5F5,stroke:#BDBDBD,stroke-width:1px
+        op_GET__pages__handle["📖 GET /pages/:handle"]
+        style op_GET__pages__handle fill:#FFFFFF,stroke:#4CAF50,stroke-width:1.5px
+        NextJS --> op_GET__pages__handle
+        op_GET__pages__handle -.-> Shopify
+        op_GET__pages["📖 GET /pages"]
+        style op_GET__pages fill:#FFFFFF,stroke:#4CAF50,stroke-width:1.5px
+        NextJS --> op_GET__pages
+        op_GET__pages -.-> Shopify
+    end
+
+    subgraph domain_ISR["📦 ISR"]
+        style domain_ISR fill:#F5F5F5,stroke:#BDBDBD,stroke-width:1px
+        op_POST__api_revalidate["📝 POST /api/revalidate"]
+        style op_POST__api_revalidate fill:#FFFFFF,stroke:#FF5722,stroke-width:1.5px
+        NextJS --> op_POST__api_revalidate
+        op_POST__api_revalidate -.-> Shopify
+    end
+
