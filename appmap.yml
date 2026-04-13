@@ -1,0 +1,7 @@
+name: qwen-code-analyzer-agent
+language: javascript
+appmap_dir: tmp/appmap
+
+# Next.js configuration
+# Run with: npx appmap record -- npm run dev
+# Or run tests: npx appmap agent:record -- npm test
